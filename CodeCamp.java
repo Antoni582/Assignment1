@@ -277,20 +277,32 @@ public class CodeCamp {
                     "and may only contain 'q's and '.'s");        
         }
 
-        int[][] queenPosition = new int[board.length][board.length];
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j<board[i].length; j++){
                 if(board[i][j] == 'q') {
-                    
-                    System.out.println("The position of the queen is: " + i + ", " + j);
+                    System.out.println("The position of the queen is: " + j + ", " + i);
+                    for(int x = j + 1; x < board.length; x++){
+                        if(board[i][x] == 'q'){
+                            return false;
+                        }
+                    }
+                    for (int y = i + 1; y < board.length; y++){
+                        if(board[y][j]== 'q'){
+                            return false;
+                        }
+                    }
+
+
+                    }
                 }
             }
-        }
+
+
 
         /* CS314 STUDENTS: INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
 
-        return false; 
-    }
+        return true;
+}
 
 
     /**

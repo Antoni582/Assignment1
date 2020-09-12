@@ -420,7 +420,7 @@ public class CodeCampTester {
         
         // test 30, queensAreASafe
         char[][] board = { { '.', '.', '.' }, 
-                           { 'q', '.', '.' }, 
+                           { 'q', '.', '.' },
                            { '.', '.', 'q' } };
 
         expectedBool = true;
