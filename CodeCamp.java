@@ -4,14 +4,14 @@
  * 
  *  replace <NAME> with your name.
  *
- *  On my honor, <NAME>, this programming assignment is my own work
+ *  On my honor, Antonio Gonzalez, this programming assignment is my own work
  *  and I have not provided this code to any other student.
  *
- *  Name:
- *  email address:
- *  UTEID:
- *  Section 5 digit ID: 
- *  Grader name:
+ *  Name: Antonio Gonzalez
+ *  email address: agonzalez@utexas.edu
+ *  UTEID: adg3853
+ *  Section 5 digit ID: 50915
+ *  Grader name: Irena
  *  Number of slip days used on this assignment:
  */
 
@@ -38,15 +38,11 @@ public class CodeCamp {
         //Creating variable for hamming distance
         int hammingDist = 0;
 
-        //Checking hamming distance
+        //Checking hamming distance by comparing every valuable in the array.
         for (int i = 0; i < aData.length; i++){
             if (aData[i] != bData[i])
                 hammingDist += 1;
         }
-
-
-
-        /* CS314 STUDENTS: INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
 
         return hammingDist;
     }
@@ -115,9 +111,6 @@ public class CodeCamp {
 
         }
 
-
-        /* CS314 STUDENTS: INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/        
-
         return true;
     }
 
@@ -154,16 +147,25 @@ public class CodeCamp {
 
         int mostVowelsIndex = 0;
 
-        //
 
+
+        // creating a string that will store the string in the specified index to modix and play with later
         String testString;
+
+        // going over the arryofstrings
         for (int i = 0; i < arrayOfStrings.length; i++){
 
+
+            // setting the vowelcount for an index that contains null to -1
             if (arrayOfStrings[i] == null) {
                 vowelCount[i] = -1;
             }
+
+            // storing the string on i index to a string variable named testString to check if it contains any vowel.
             else{
                 testString = arrayOfStrings[i];
+                // converting the string of index i to an array of characters to easiy check if any index of that char array contains a vowel
+                // and if it does, we add the vowel count for that specific string to its designated inex in the voweCount array.
                 char[] charArray = testString.toCharArray();
                 for (char j = 0; j < charArray.length; j++){
                     if (charArray[j] == 'A' || charArray[j] == 'a' || charArray[j] == 'E' || charArray[j] == 'e' || charArray[j] == 'I'
@@ -184,9 +186,6 @@ public class CodeCamp {
                 mostVowelsIndex = i;
             }
         }
-
-        /* CS314 STUDENTS: INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
-        //  You can use all methods from the String class and native arrays.
 
         return mostVowelsIndex;
     }
@@ -245,8 +244,6 @@ public class CodeCamp {
 
         sameBirthday = (sameBirthday*(sameBirthday - 1)) / 2;
 
-        /* CS314 STUDENTS: INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
-
         return sameBirthday;
     }
 
@@ -278,20 +275,30 @@ public class CodeCamp {
         }
 
 
-
+        //Going over the board for i number of rows and j number of cols
         for(int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
+
+                // if board in the specific index contains q then we will check every instaince
+                // of that j going right to make sure there are no conflicts with another q
                 if (board[i][j] == 'q') {
                     for (int x = j + 1; x < board.length; x++) {
                         if (board[i][x] == 'q') {
                             return false;
                         }
                     }
+
+                    // doing the same as above but instead of checking right, we will check down
+                    // on i.
                     for (int y = i + 1; y < board.length; y++) {
                         if (board[y][j] == 'q') {
                             return false;
                         }
                     }
+                    // this will check the down-to- right diagonal of a specifi q on the board.
+                    // if j is bigger or equal to i, we will use a specifc algorithm
+                    // to account for the number of moves available without going
+                    // out of bounds.
                     if (j >= i) {
                         int q = i + 1;
                         for (int k = j + 1; k <= board.length - 1; k++) {
@@ -303,6 +310,10 @@ public class CodeCamp {
                         }
 
                     }
+
+                    // just as the example above this will check the diagonal of q
+                    // going down-to-right and making sure we are not going out of
+                    // bounds.
                     if (j < i) {
                         int q = j + 1;
                         for (int k = i + 1; k < board.length; k++) {
@@ -313,6 +324,12 @@ public class CodeCamp {
                             }
                         }
                     }
+
+                    // This will check a specific q and its down-to-left
+                    // diagonal and make sure there is no conflict.
+                    // Also, this is a speicif algorithm that will
+                    // make sure we only go down and left a specific
+                    // amount of spaces without going out of bonds.
 
                     if (i + j <= (board.length - 1)) {
                         int x = i + 1;
@@ -327,7 +344,8 @@ public class CodeCamp {
                         }
                     }
 
-                    //camparing the queen with
+                    // just like i did above but only checking certain i and j to make
+                    // sure the loop will not go out of bounds.
                     if (i + j > (board.length - 1)) {
                         int x = i + 1;
                         int y = j - 1;
@@ -371,39 +389,57 @@ public class CodeCamp {
                     " one column, and must be rectangular."); 
         }
 
+
+        // creating variables to store the rows and cols of the 2d array named city
+        // also, creating a variable that will keep track of the current sum and max sum
         int rows = city.length;
         int cols = city[0].length;
-        int currentSum = 0;
+        int currentSum;
         int maxSum = -1000000;
 
-
+        // this will loop for the number of rows and cols in the city array.
+        // Also, this loop will keep track of the top left coordinate of the sub array of the 2d array.
         for (int r = 0; r < rows; r++){
             for(int c = 0; c < cols; c++){
 
 
-                //bottom corner
+                //this is are coordinates of the bottom right point of the rectangle.
                 int r2 = 0;
                 int c2 = 0;
+
+                // This makes sure that i only loop around the city 2d array for the speficied amount of
+                // rows in the city
                 while(r2 < rows) {
+
+                    //this is making sure that everytimn we go over the loop to add their indexes up,
+                    // the current sum resets to 0.
                     currentSum = 0;
+
+                    // this will loop the sub rectangle of the 2d array up to the speficied bottom-right coordinate
                     for (int k = r; k <= r2; k++) {
                         for (int x = c; x <= c2; x++) {
-//                            System.out.println("current index int: " + city[k][x]);
-                            currentSum = currentSum + city[k][x];
+
+
+                            // this will add up every int of the sub rectangel to be added up later
+                            currentSum += city[k][x];
                             }
                         }
 
+                    // this is comparing the current sum of that sub rectangle to the current "maxSum" of a sub
+                    // rectanble. if the maxSum is less than the current sum then the maxSum will be equal
+                    // the current Sum.
 
-                    if(currentSum > maxSum && currentSum != 0){
+                    if(maxSum < currentSum && currentSum != 0){
                         maxSum = currentSum;
                     }
 
-
-
-//                    System.out.println("currentsum in loop: " + currentSum);
-//                    System.out.println("current max in loop: " + maxSum);
-//                    System.out.println("-------------------------------------------------\n");
+                    // this is making sure every loop accounts for the bottom coordinate (r2,c2) shift to the next
+                    // coordinate (r2, c2 + 1) by adding 1 every time we get the sum of a sub rectangle.
                     c2++;
+
+                    // this is making sure that once the bottom right coordinate arrives at the limit of the numeber
+                    // of cols in the 2d array, we shift the bottom right coordinates down and reset the
+                    // position of c2.
                     if (c2 == cols){
                         r2++;
                         c2 = 0;
