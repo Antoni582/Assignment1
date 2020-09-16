@@ -450,9 +450,9 @@ public class CodeCampTester {
         
         // test 32, queensAreASafe
         board = new char[][] { { 'q', '.', '.', '.', '.', '.', '.' },
-                               { '.', '.', '.', '.', 'q', '.', '.' }, 
+                               { '.', '.', '.', '.', 'q', '.', '.' },
                                { '.', 'q', '.', '.', '.', '.', '.' },
-                               { '.', '.', '.', '.', '.', 'q', '.' }, 
+                               { '.', '.', '.', '.', '.', 'q', '.' },
                                { '.', '.', 'q', '.', '.', '.', '.' },
                                { '.', '.', '.', '.', '.', '.', 'q' }, 
                                { '.', '.', '.', 'q', '.', '.', '.' } };
@@ -558,21 +558,21 @@ public class CodeCampTester {
             System.out.println(" ***** FAILED ***** test 38, getValueOfMostValuablePlot");
         }
         
-        // comment in when ready for stress test
-        // test 39, getValueOfMostValuablePlot
+//         comment in when ready for stress test
+//         test 39, getValueOfMostValuablePlot
 
-//         city = new int[100][100]; 
-//         Random rand = new Random(); 
-//         for (int row = 0; row < city.length; row++) { 
-//             for(int col = 0; col < city[row].length; col++) { 
-//                 city[row][col] = rand.nextInt(200) - 100;
-//             } 
-//         } actual = CodeCamp.getValueOfMostValuablePlot(city); 
-//         System.out.println("\nTest 39 getValueOfMostValuablePlot: expected value: > 0" 
-//                 + ", actual value: " + actual); 
+//         city = new int[100][100];
+//         Random rand = new Random();
+ //        for (int row = 0; row < city.length; row++) {
+ //            for(int col = 0; col < city[row].length; col++) {
+//               city[row][col] = rand.nextInt(200) - 100;
+//             }
+//         } actual = CodeCamp.getValueOfMostValuablePlot(city);
+//         System.out.println("\nTest 39 getValueOfMostValuablePlot: expected value: > 0"
+//                 + ", actual value: " + actual);
 //         if( actual > 0 ) {
 //             System.out.println(" passed test 39, getValueOfMostValuablePlot");
-//         } else { 
+//         } else {
 //             System.out.println(" ***** FAILED ***** test 39, getValueOfMostValuablePlot");
 //         }
 

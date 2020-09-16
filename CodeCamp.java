@@ -277,29 +277,72 @@ public class CodeCamp {
                     "and may only contain 'q's and '.'s");        
         }
 
-        for(int i = 0; i < board.length; i++){
-            for(int j = 0; j<board[i].length; j++){
-                if(board[i][j] == 'q') {
-                    System.out.println("The position of the queen is: " + j + ", " + i);
-                    for(int x = j + 1; x < board.length; x++){
-                        if(board[i][x] == 'q'){
+
+
+        for(int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] == 'q') {
+                    for (int x = j + 1; x < board.length; x++) {
+                        if (board[i][x] == 'q') {
                             return false;
                         }
                     }
-                    for (int y = i + 1; y < board.length; y++){
-                        if(board[y][j]== 'q'){
+                    for (int y = i + 1; y < board.length; y++) {
+                        if (board[y][j] == 'q') {
                             return false;
                         }
                     }
+                    if (j >= i) {
+                        int q = i + 1;
+                        for (int k = j + 1; k <= board.length - 1; k++) {
+                            if (board[q][k] == 'q') {
+                                return false;
+                            } else {
+                                q++;
+                            }
+                        }
 
+                    }
+                    if (j < i) {
+                        int q = j + 1;
+                        for (int k = i + 1; k < board.length; k++) {
+                            if (board[k][q] == 'q') {
+                                return false;
+                            } else {
+                                q++;
+                            }
+                        }
+                    }
 
+                    if (i + j <= (board.length - 1)) {
+                        int x = i + 1;
+                        int y = j - 1;
+                        for (int k = i; k < i + j; k++) {
+                            if (board[x][y] == 'q') {
+                                return false;
+                            } else {
+                                x++;
+                                y--;
+                            }
+                        }
+                    }
+
+                    //camparing the queen with
+                    if (i + j > (board.length - 1)) {
+                        int x = i + 1;
+                        int y = j - 1;
+                        for (int k = i; k < board.length - 1; k++) {
+                            if (board[x][y] == 'q') {
+                                return false;
+                            } else {
+                                x++;
+                                y--;
+                            }
+                        }
                     }
                 }
             }
-
-
-
-        /* CS314 STUDENTS: INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
+        }
 
         return true;
 }
@@ -326,11 +369,51 @@ public class CodeCamp {
                     "getValueOfMostValuablePlot. The parameter may not be null," +
                     " must value at least one row and at least" +
                     " one column, and must be rectangular."); 
-        }        
+        }
 
-        /* CS314 STUDENTS: INSERT YOUR CODE HERE AND DELETE THIS COMMENT.*/
+        int rows = city.length;
+        int cols = city[0].length;
+        int currentSum = 0;
+        int maxSum = -1000000;
 
-        return -1; 
+
+        for (int r = 0; r < rows; r++){
+            for(int c = 0; c < cols; c++){
+
+
+                //bottom corner
+                int r2 = 0;
+                int c2 = 0;
+                while(r2 < rows) {
+                    currentSum = 0;
+                    for (int k = r; k <= r2; k++) {
+                        for (int x = c; x <= c2; x++) {
+//                            System.out.println("current index int: " + city[k][x]);
+                            currentSum = currentSum + city[k][x];
+                            }
+                        }
+
+
+                    if(currentSum > maxSum && currentSum != 0){
+                        maxSum = currentSum;
+                    }
+
+
+
+//                    System.out.println("currentsum in loop: " + currentSum);
+//                    System.out.println("current max in loop: " + maxSum);
+//                    System.out.println("-------------------------------------------------\n");
+                    c2++;
+                    if (c2 == cols){
+                        r2++;
+                        c2 = 0;
+
+
+                    }
+                }
+            }
+        }
+        return maxSum;
     }
 
 
