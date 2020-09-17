@@ -221,27 +221,19 @@ public class CodeCamp {
             people[i] = 1 + rand.nextInt(numDaysInYear);
         }
 
-        //Sorting the people by their birthday
-/*
-        for (int i = 0; i < people.length; i++){
-            for (int j = 0; j < people.length - i - 1; j++){
-                if (people[j] > people[j+1]){
-                    int temp = people[j];
-                    people[j] = people[j+1];
-                    people[j+1] = temp;
-                }
-            }
-        }
-*/
-        //
+
+        // checking to see how many people share the birthday of the person in the
+        // first index.
+
         int sameBirthday = 0;
         for (int i = 0; i < people.length; i++){
             if (people[0] == people[i]){
                 sameBirthday++;
             }
         }
-        //
 
+
+        // equation for the number of unique paris of people.
         sameBirthday = (sameBirthday*(sameBirthday - 1)) / 2;
 
         return sameBirthday;
@@ -455,6 +447,86 @@ public class CodeCamp {
 
     // !!!!! ***** !!!!! ***** !!!!! ****** !!!!! ****** !!!!! ****** !!!!!!
     // CS314 STUDENTS: Put your birthday problem experiment code here:
+
+
+//    public static void birthDayExperiment1(){
+//
+//        // I didn't know you can use _ as a ,. Pretty Cool!
+//        int numOfExperiments = 1_000_000;
+//        float sum = 0;
+//
+//        int [] pairs = new int[numOfExperiments];
+//
+//
+//        for (int i = 0; i < numOfExperiments; i++){
+//            pairs[i] = sharedBirthdays(187, 365);
+//
+//        }
+//
+//        for (int i = 0; i < pairs.length; i++){
+//            sum += pairs[i];
+//        }
+//
+//        float avg = (sum / numOfExperiments);
+//
+//        System.out.println("the average number of pairs is: " + avg + " sum: " + sum);
+//
+//    }
+//
+//    public static void birthdayExperiment2(){
+//        //how many people so that there is at least a 50% that 2 people share the same birthday.
+//
+//        int numOfExperiments = 1_000_000;
+//        int [] pairs = new int[numOfExperiments];
+//
+//        float numOfPositiveResults = 0;
+//
+//
+//        for (int i = 0; i < numOfExperiments; i++){
+//            pairs[i] = sharedBirthdays(20, 365);
+//            if (pairs[i] > 0){
+//                numOfPositiveResults++;
+//
+//            }
+//            //  System.out.println(pairs[i]);
+//        }
+//
+//
+//        float percantage = (numOfPositiveResults / numOfExperiments) * 1000;
+//
+//        System.out.println("percentage of positive results: " + percantage);
+//
+//    }
+//
+//    public static void birthdayExperiment3(){
+//
+//        int numOfExperiments = 50_000;
+//        int numOfPeople = 100;
+//        int [] pairs = new int[numOfExperiments];
+//
+//        double numOfPositiveResults = 0;
+//
+//
+//        for (int i = 2; i <= numOfPeople; i++){
+//
+//            for(int j = 0; j < numOfExperiments; j++){
+//                pairs[j] = sharedBirthdays(i, 365);
+//                if (pairs[j] > 0){
+//                    numOfPositiveResults++;
+//                }
+//            }
+//            double percentage1 = (numOfPositiveResults / numOfExperiments) * 100;
+//            if (percentage1 > 100){
+//                percentage1 = 100.00;
+//            }
+//
+//            String formattedDouble = String.format("%.2f", percentage1);
+//            int result = (int) numOfPositiveResults;
+//            System.out.println("Num People: " + i + ", number of experiments with one or more shared birthday: "+
+//                    result + " percentage: " + formattedDouble);
+//        }
+//    }
+//
 
 
     /* 
